@@ -2,28 +2,42 @@
 #include <string.h>
 
 struct Node {
-   char  string[256];
+   char* string;
    int   start;
    int   length;
 };
 
-void parseInput(char* inputString, struct Node input){
-    char delim = ",";
+void printNode(struct Node this) {
+    printf("string: %s, start: %d, end: %d", this.string, this.start, this.length);
+}
+
+void parseInput(char* inputString){
+    int start, length;
     int i = 0;
-    char**array[3];
-    //char array[3][256];
-    int lengthInput = strlen(inputString);
-    int j;
+    char * string;
     char * token = strtok(inputString, ",");
+    int r;
+    r = 0;
     while (token = strtok(0, ",")) {
-          puts(token);
+        if( r == 0 ) {
+            string = token;
+            int k = 0;
+            printf("String token: %s", token);
+        }
+        else if( r == 1 ) {
+            int num;
+            start = atoi(token);
+            printf("Start token: %d", start);
+            //input.start = num;
+        }
+        else {
+            int nums;
+            length = atoi(token);
+            //input.length = nums;
+        }
+        r += 1;
     }
-    /*
-    while(token != NULL){
-        printf( " %s\n", token );
-        token = strtok(NULL, ",");
-    }
-    */
+    printf("String Length is:%d", strlen(string));
 }
 
 void printString(const char* inputString, int start, int length){
@@ -39,8 +53,9 @@ int main() {
     struct Node input;
     printf("Please Enter a String and the starting index and length.\n> ");
     fgets(str, 256, stdin);
-    parseInput(str, input);
-    printString(str, input.start, input.length);
-    printf("\n");
+    parseInput(str);
+    printNode(input);
+    //printString(str, input.start, input.length);
+    //printf("\n");
     return 0;
 }
