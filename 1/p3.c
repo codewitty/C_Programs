@@ -14,32 +14,16 @@ void parseInput(char* inputString, struct Node input){
     //char array[3][256];
     int lengthInput = strlen(inputString);
     int j;
-    for(i; i < 3; i++){
-        char out[256] = "";
-        j = 0;
-        char check = (char) inputString[j];
-        for(j; inputString[j] != delim; j++){
-            if (inputString[j] == " "){
-                continue;
-            }
-            else{
-                out[j] = inputString[j];
-            }
-        printf("Out Check %d\n", i);
-        int x = 0;
-        int ll = strlen(out);
-        for(x; x < ll; x++){
-            printf("%c", out[x]);
-        }
-        printf("\n");
-
-        array[i] = out;
-        }
+    char * token = strtok(inputString, ",");
+    while (token = strtok(0, ",")) {
+          puts(token);
     }
-    int l = 0;
-    for(l; l < 3; l++){
-        printf("%s\n", array[l]);
+    /*
+    while(token != NULL){
+        printf( " %s\n", token );
+        token = strtok(NULL, ",");
     }
+    */
 }
 
 void printString(const char* inputString, int start, int length){
